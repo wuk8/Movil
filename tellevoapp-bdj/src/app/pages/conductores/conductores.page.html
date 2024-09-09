@@ -3,23 +3,23 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>conductores</ion-title>
-  </ion-toolbar>  
+    <ion-title>Conductores</ion-title>
+  </ion-toolbar>
 </ion-header>
 
-
-<!--CARD PARA IR A LOS CONDUCTORES-->
-<ion-card>
-  <img alt="conductor" src="assets/conductorr.png" />
-  <ion-card-header>
-    <ion-card-title>Conductores</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <p>Explora los diferentes conductores, sus estadísticas y reseñas</p>
-    <ion-button routerLink="/detalle-conductor">
-      <ion-icon slot="start" name="eye"></ion-icon>
-      Conductores
-    </ion-button>
-  </ion-card-content>
-</ion-card>
-
+<ion-content class="ion-padding-top">
+  <!-- CARD PARA IR A LOS CONDUCTORES -->
+  <ion-card class="custom-card">
+    <img alt="conductor" src="assets/conductorr.png" />
+    <ion-card-header>
+      <ion-card-title>Conductores</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Explora los diferentes conductores, sus estadísticas y reseñas</p>
+      <ion-button routerLink="/detalle-conductor">
+        <ion-icon slot="start" name="eye"></ion-icon>
+        Ver Conductores
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

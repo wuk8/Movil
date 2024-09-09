@@ -1,0 +1,26 @@
+.custom-card {
+    margin: 15px;
+    border-radius: 12px;
+  }
+  
+  ion-card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  ion-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0; /* Para que la imagen esté redondeada en las esquinas superiores */
+  }
+  
+  ion-button {
+    margin-top: 10px;
+  }
+  
