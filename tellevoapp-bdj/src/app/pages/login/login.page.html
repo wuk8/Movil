@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img alt="login gif" src="assets/gif.gif" />
+    <ion-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="Login()">
+        <ion-item>
+          <ion-label position="floating">Usuario:</ion-label>
+          <ion-input formControlName="email" type="email" placeholder="bstn@bstn.cl"></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="loginForm.get('email')?.hasError('required')">
+          El correo es requerido!
+        </ion-text>
+        <ion-text color="danger" *ngIf="loginForm.get('email')?.hasError('email')">
+          El correo debe ser un email válido!
+        </ion-text>
+        <ion-item>
+          <ion-label position="floating">Contraseña:</ion-label>
+          <ion-input formControlName="pass" type="password"></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="loginForm.get('pass')?.hasError('required')">
+          La contraseña es requerida!
+        </ion-text>
+        <ion-text color="danger" *ngIf="loginForm.get('pass')?.hasError('minlength')">
+          La contraseña debe tener al menos 6 caracteres!
+        </ion-text>
+        <ion-button expand="full" type="submit">Ingresar</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

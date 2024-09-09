@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>INICIO</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="card-container">
+    <!--Card de Bienvenida-->
+    <ion-card>
+      <ion-card-title>¡Hola!</ion-card-title>
+      <ion-card-content>
+        Bienvenido al sistema. ¿Qué desea hacer el día de hoy?
+      </ion-card-content>
+    </ion-card>
+
+    <!--CARD PARA IR A LOS CONDUCTORES-->
+    <ion-card>
+      <img alt="conductor" src="assets/conductorr.png" />
+      <ion-card-header>
+        <ion-card-title>Conductores</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Explora los diferentes conductores, sus estadísticas y reseñas</p>
+        <ion-button routerLink="/conductores">
+          <ion-icon slot="start" name="eye"></ion-icon>
+          Conductores
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <!--Pasajeros-->
+    <ion-card>
+      <img alt="Pasajero" src="assets/cliente-usuario.jpg" />
+      <ion-card-header>
+        <ion-card-title>Mazda 3, Patente bdjd18</ion-card-title>
+        <ion-card-subtitle>Chofer Toreto Muñoz</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Ten los mejores viajes con nosotros, ten seguridad e información de tus viajes necesaria y actualizada a cada minuto!!</p>
+        <ion-button routerLink="/usuario">
+          <ion-icon slot="start" name="eye"></ion-icon>
+          Pasajeros
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

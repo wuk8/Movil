@@ -1,0 +1,7 @@
+.card-container {
+    display: flex;
+    flex-direction: column; /* Apila los cards verticalmente */
+    gap: 16px; /* Espacio entre los cards */
+    justify-content: flex-start; /* Alinea los elementos al principio */
+  }
+  

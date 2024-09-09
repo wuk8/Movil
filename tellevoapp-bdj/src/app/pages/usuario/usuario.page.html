@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!--back-->
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngfor="let aux of usuario" (click)="VerDetalleUsuario(aux)">
+      <ion-avatar>
+        <img [src]="aux.imagen" alt="assets">
+        
+      </ion-avatar>
+      <ion-label>
+        <h2>{{aux.nombre}}</h2>
+      </ion-label>
+      
+    </ion-item>
+  </ion-list>
+  
+</ion-content>
