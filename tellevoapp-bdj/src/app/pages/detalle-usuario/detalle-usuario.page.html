@@ -3,14 +3,16 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>detalle-usuario</ion-title>
+    <ion-title>Detalle Viaje</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">detalle-usuario</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+<ion-content>
+  <p>Detalles del viaje seleccionado:</p>
+  <h2>{{ nombreViaje }}</h2>  <!-- Muestra el nombre del viaje -->
+
+  <img [src]="imagenViaje" alt="{{ nombreViaje }}" />  <!-- Muestra la imagen del viaje -->
+
+  
 </ion-content>

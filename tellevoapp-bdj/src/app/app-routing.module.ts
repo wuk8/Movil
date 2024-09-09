@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { DetalleConductorPage } from './pages/detalle-conductor/detalle-conductor.page';
+import { ConductoresPage } from './pages/conductores/conductores.page';
+
 
 const routes: Routes = [
   {
@@ -47,6 +50,13 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () => import('./pages/admin/admin.module').then( m => m.AdminPageModule)
   },
+  {
+    path: 'detalle-usuario/:nombre/:imagen/:descripcion',  // Define la ruta con los tres parámetros
+    loadChildren: () => import('./pages/detalle-usuario/detalle-usuario.module').then(m => m.DetalleUsuarioPageModule)
+  },
+  { path: 'conductores', component: ConductoresPage },
+  { path: 'detalle-conductor/:nombre/:imagen', component: DetalleConductorPage },
+  
 ];
 
 @NgModule({

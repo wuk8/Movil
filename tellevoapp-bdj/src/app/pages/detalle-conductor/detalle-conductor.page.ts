@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-detalle-conductor',
   templateUrl: './detalle-conductor.page.html',
@@ -7,18 +8,14 @@ import { Router } from '@angular/router';
 })
 export class DetalleConductorPage implements OnInit {
 
-  conductores = [
-    { nombre: 'Roberto Manfinfla', imagen: 'assets/roberto.png'},
-    { nombre: 'Alexis Sanchez', imagen: 'assets/alexis.png'},
-  ];
-  
-  constructor(private router: Router) { }
+  nombreConductor: string | null = '';
+  imagenConductor: string | null = '';
+
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
+    // Capturar los parámetros de la URL
+    this.nombreConductor = this.route.snapshot.paramMap.get('nombre');
+    this.imagenConductor = this.route.snapshot.paramMap.get('imagen');
   }
-  VerDetalleConductor(aux:any) {
-    //console.log(aux);
-    this.router.navigate(['detalle-conductor'])
-  }
-
 }

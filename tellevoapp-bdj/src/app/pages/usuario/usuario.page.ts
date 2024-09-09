@@ -8,19 +8,18 @@ import { Router } from '@angular/router';
 })
 export class UsuarioPage implements OnInit {
 
-  pasajeros = [
-    {nombre: 'Cristiano Ronaldo',imagen:'assets/cr7.jpg'},
-    {nombre: 'Batman',imagen:'assets/Batman.jpg'},
+  usuarios = [
+    { nombre: 'Av.Manquehue Nte. 475,Las Condes,Metropolitana', imagen: 'assets/viaje4.jpg', descripcion: 'Descripción del viaje de DUOC UC a Costanera.' },
+    { nombre: 'DE CASA A DUOC UC', imagen: 'assets/viaje3.jpg', descripcion: 'Descripción del viaje de casa a DUOC UC.' },
   ];
-
 
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  VerDetalleUsuario(aux:any) {
-    //console.log(aux);
-    this.router.navigate(['detalle-usuario'])
+  VerDetalleUsuario(aux: any) {
+    // Navegar y pasar parámetros (nombre, imagen, descripcion)
+    this.router.navigate(['detalle-usuario', { nombre: aux.nombre, imagen: aux.imagen, descripcion: aux.descripcion }]);
   }
 }

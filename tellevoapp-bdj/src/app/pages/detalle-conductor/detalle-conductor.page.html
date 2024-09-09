@@ -3,18 +3,18 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    
-    <ion-title>detalle-conductor</ion-title>
+    <ion-title>Detalle del Conductor</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">detalle</ion-title>
-      <ion-title size="large">conductor</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding-top">
+  <p>Detalles del conductor seleccionado:</p>
+  
+  <!--Mostrar el nombree--> 
+  <ion-card-title>{{  nombreConductor }}</ion-card-title>
+  
+  <!--Mostrar la imagen  -->
+  <img [src]="imagenConductor" alt="{{ nombreConductor }}" *ngIf="imagenConductor">
+
+  <p>Más información sobre el conductor {{ nombreConductor }}...</p>
 </ion-content>
-
-

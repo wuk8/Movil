@@ -9,18 +9,16 @@ import { Router } from '@angular/router';
 export class ConductoresPage implements OnInit {
 
   conductores = [
-    { nombre: 'Roberto Manfinfla', imagen: 'assets/roberto.png'},
-    { nombre: 'Alexis Sanchez', imagen: 'assets/alexis.png'},
+    { nombre: 'Roberto Manfinfla', imagen: 'assets/roberto.png' },
+    { nombre: 'Alexis Sanchez', imagen: 'assets/alexis.png' },
   ];
   
   constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  VerDetalleConductor(aux:any) {
-    //console.log(aux);
-    this.router.navigate(['detalle-conductor'])
+  VerDetalleConductor(conductor: any) {
+    // Navegar a la página de detalles con el nombre e imagen como parámetros
+    this.router.navigate(['detalle-conductor', conductor.nombre, conductor.imagen]);
   }
-
 }
