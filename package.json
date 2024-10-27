@@ -1,5 +1,9 @@
 {
   "devDependencies": {
-    "@angular/cli": "18.2.3"
+    "@angular/cli": "^18.2.3"
+  },
+  "dependencies": {
+    "@angular/fire": "^18.0.1",
+    "firebase": "^11.0.1"
   }
 }

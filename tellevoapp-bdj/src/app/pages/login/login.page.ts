@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AlertController, LoadingController, MenuController } from '@ionic/angular';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { ConductoresService } from 'src/app/services/conductores.service';
+import { AuthService } from 'src/app/services/firebase/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -28,7 +29,8 @@ export class LoginPage implements OnInit {
     private loadingController: LoadingController,
     private usuarioService: UsuarioService,
     private menuController: MenuController,
-    private conductorService: ConductoresService
+    private conductorService: ConductoresService,
+    private authService:AuthService
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -40,46 +42,73 @@ export class LoginPage implements OnInit {
     this.menuController.enable(false);
   }
 
+
+
   async Login() {
+    try{
     const loading = await this.loadingController.create({
       message: 'Cargando.....',
       duration: 2000
     });
 
-    //const email = this.emailValue;
-    //const pass = this.passValue;
-    const { email, pass } = this.loginForm.value;
+   
 
-    const user = this.usuarios.find(aux => aux.email === email && aux.pass === pass)
+    //const { email, pass } = this.loginForm.value;
+
+    //buscamos al usuario en la base de datos
+    /*const user = this.usuarios.find(aux => aux.email === email && aux.pass === pass)*/
   
+      const email = this.emailValue;
+      const pass = this.passValue;
 
-    if (user) {
-      await loading.present();
-      localStorage.setItem('usuarioLogin', JSON.stringify(user));
+      const usuarioFirebase = await this.authService.login(email as string, pass as string);
+
+      if (usuarioFirebase.user) {
+        const alert = await this.alertController.create({
+          header: 'Acceso denegado',
+          message: 'Usuario o contraseña incorrecta',
+          buttons: ['OK']
+        });
+        await alert.present();
+        this.emailValue = '';
+        this.passValue = '';
       
-      setTimeout(async () => {
-        await loading.dismiss();
-        if(user.tipo === 'admin' ){
-          this.router.navigate(['/admin-dashboard']);
-          this.router.navigate(['home']);
-        } else if (user.tipo === 'usuario'){
-          this.router.navigate(['/usuario-dashboard']); //pasajeros
-          this.router.navigate(['usuario']);
-        } else {
-          this.router.navigate(['/conductor-dashboard']);
-          this.router.navigate(['conductores']);
-        }
+        await loading.present();
+        localStorage.setItem('usuarioLogin', email as string);
+        
+        //momentaneamente
+        const tipo = 'admin' as string;
+  
+        setTimeout(async () => {
+          await loading.dismiss();
+          if(tipo === 'admin' ){
+            this.router.navigate(['/admin-dashboard']);
+            this.router.navigate(['home']);
+          } else if (tipo === 'usuario'){
+            this.router.navigate(['/usuario-dashboard']); //pasajeros
+            this.router.navigate(['usuario']);
+          } else {
+            this.router.navigate(['/conductor-dashboard']);
+            this.router.navigate(['conductores']);
+          }
+          
+  
+        }, 2000);
         
 
-      }, 2000);
-    } else {
-      const alert = await this.alertController.create({
-        header: 'Acceso denegado',
-        message: 'Usuario o contraseña incorrecta',
-        buttons: ['OK']
-      });
-      await alert.present();
-      this.loginForm.reset();
+
     }
+
+  } catch(error) {
+    const alert = await this.alertController.create({
+      header: 'Acceso denegado',
+      message: 'Usuario o contraseña incorrecta.',
+      buttons: ['OK']
+    });
+    await alert.present();
+    this.emailValue = '';
+    this.passValue = '';
+   }
+      
   }
 }
